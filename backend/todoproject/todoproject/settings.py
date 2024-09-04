@@ -11,13 +11,15 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
-import os 
+import os
+ 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = Path(__file__).resolve().parent.parent
+STATIC_URL = '/static/'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'frontend/templates')],
+        'DIRS': [os.path.join(BASE_DIR, '../frontend/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -29,9 +31,8 @@ TEMPLATES = [
         },
     },
 ]
-
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'frontend/static'),
+    '/home/n105na/myproject/frontend/static',  # Adjusted to be relative
 ]
 
 
@@ -57,7 +58,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'tasks',
-    'users', 
+#    'users', 
 ]
 
 
